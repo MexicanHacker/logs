@@ -30,6 +30,6 @@ Vagrant::Config.run do |config|
   # You can have Vagrant automatically mount folders.
   # Here we're mounting this directory to ./codeshare on the VM
   # This is where we will pull the demandware git repo
-  config.vm.share_folder "converse", "/home/vagrant/converse", "./converse"
+  config.vm.share_folder "codeshare", "/home/vagrant/codeshare", "./codeshare"
 
 end
