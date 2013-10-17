@@ -1,0 +1,5 @@
+site :opscode
+
+cookbook "java", git: "git.tacitknowledge.com:/gitroot/chef/cookbooks/java.git", tag: "1.4.3"
+
+metadata

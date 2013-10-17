@@ -1,0 +1,10 @@
+################################### Cluster ###################################
+cluster.name: <%= node[:elasticsearch][:cluster_name] %>
+
+#################################### Node #####################################
+node.name: "<%= node[:elasticsearch][:node_name] %>"
+
+#################################### Index ####################################
+
+index.number_of_shards: <%= node[:elasticsearch][:shards] %>
+index.number_of_replicas: <%= node[:elasticsearch][:replicas] %>

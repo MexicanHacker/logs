@@ -32,4 +32,11 @@ Vagrant::Config.run do |config|
   # This is where we will pull the demandware git repo
   config.vm.share_folder "codeshare", "/home/vagrant/codeshare", "./codeshare"
 
+  config.vm.provision :chef_solo do |chef|
+    # We're going to download our cookbooks from the web
+    chef.cookbooks_path = "cookbooks"
+    chef.roles_path = "roles"
+    chef.add_role "base"
+  end
+
 end
