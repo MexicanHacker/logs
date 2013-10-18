@@ -19,17 +19,9 @@ Vagrant::Config.run do |config|
     "--cpus", "4"
   ]
 
-  config.vm.forward_port 80, 4545
-  config.vm.forward_port 5432, 5434
-  config.vm.forward_port 3000, 3030
-  config.vm.forward_port 4000, 4040
-  config.vm.forward_port 9090, 9009
-  config.vm.forward_port 9200, 9220
-  config.vm.forward_port 9292, 9292
+  config.vm.forward_port 80, 8080
+  config.vm.forward_port 9200, 9200
 	
-  # You can have Vagrant automatically mount folders.
-  # Here we're mounting this directory to ./codeshare on the VM
-  # This is where we will pull the demandware git repo
   config.vm.share_folder "codeshare", "/home/vagrant/codeshare", "./codeshare"
 
   config.vm.provision :chef_solo do |chef|
@@ -38,5 +30,8 @@ Vagrant::Config.run do |config|
     chef.roles_path = "roles"
     chef.add_role "base"
   end
+
+  config.vm.provision :shell, :path => "./codeshare/scripts/logstash_install.sh"
+  config.vm.provision :shell, :path => "./codeshare/scripts/kibana_install.sh"
 
 end

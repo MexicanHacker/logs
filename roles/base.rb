@@ -4,7 +4,7 @@ description "The role for all VMs"
 env_run_lists "_default" => %w[
     yum
     elasticsearch
-    chef-logstash
+    nginx
 ]
 
 default_attributes \
