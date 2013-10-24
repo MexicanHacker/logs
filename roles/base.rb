@@ -3,8 +3,10 @@ description "The role for all VMs"
 
 env_run_lists "_default" => %w[
     yum
-    elasticsearch
     nginx
+    elasticsearch
+    logstash
+    kibana
 ]
 
 default_attributes \

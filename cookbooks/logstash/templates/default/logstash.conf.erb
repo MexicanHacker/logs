@@ -1,0 +1,26 @@
+input {
+  file {
+    path => "/home/vagrant/codeshare/logs/demandware-error-*.log"
+    type => sample
+    start_position => "beginning"
+    sincedb_path => "$HOME/.sincedb*"
+  }
+}
+
+filter {
+  if [type] == "sample" {
+    grok {
+      pattern => [ "%{TIMESTAMP_ISO8601:syslog_timestamp}" ]
+      add_field => [ "received_at", "%{@timestamp}" ]
+    }
+    date {
+      match => [ "syslog_timestamp", "YYYY-MM-dd HH:mm:ss.SSS" ]
+    }
+  }
+}
+
+output {
+  elasticsearch {
+    embedded => true
+  }
+}

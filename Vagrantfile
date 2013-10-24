@@ -31,7 +31,4 @@ Vagrant::Config.run do |config|
     chef.add_role "base"
   end
 
-  config.vm.provision :shell, :path => "./codeshare/scripts/logstash_install.sh"
-  config.vm.provision :shell, :path => "./codeshare/scripts/kibana_install.sh"
-
 end
